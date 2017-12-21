@@ -1,0 +1,37 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">addTodo Function</h2>
+				
+				<ul>
+					<li>Define a new function named <b>addTodo</b> and give it a paramter called todoText. This parameter can be named anything, but it's useful to give it a name that matches the variable or type of data we expect to pass to it</li>
+					<li>Some basic validation is needed to prevent creating empty to-do list items (If a user clicks the <button class="btn btn-primary btn-sm">+</button> without any text entered into the input). Create an if statement where the condition is just <b>todoText</b>.
+						<ul style="list-style:none;">
+							<li>When a condition is just a variable, it will return true as long as the variable is defined and has some assigned value that is not 0, false, or nothing. In our case, todoText will be nothing if the input is empty and return false, or if it's a string it'll evaluate to true</li>
+						</ul>
+					</li>
+					<li>Inside the if statement, use jQuery to append a new <code>&lt;li&gt;</code> to the "Current To-Dos" List</li>
+					<li>The list item that gets appended should contain a text value of the todoText variable, and also a button that will allow marking it as complete</li>
+					<li>Also, for good UI/UX, clear the value of text input by setting its value to nothing (an empty string)</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,78 @@
+<div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 text-center">Step {{step.title}}</h1>
+        
+                    <h2 class="font-weight-normal">Persisting Items</h2>
+                    
+                    <p>The to-do list application functions as intended. However, whenever the page is refreshed or the tab closed and reopened, all the to-do items are lost. Let's actually save these to the browser using something called <a href="https://www.w3schools.com/html/html5_webstorage.asp" target="_blank">localStorage</a></p>
+
+                    <ul>
+                        <li>localStorage gives us a way to store small amounts of text-based data inside the browser's cache. This data will persist between page loads and different browsing sessions but will be cleared if we manaully clear it with JavaScript or the user clears their browsers cache.</li>
+                        <li>Define a new function called <b>save</b>. This function won't need any parameters</li>
+                        <li>Create two variables inside the save function: <b>current</b> and <b>completed</b>. These will hold some sort of representation of our to-do and completed lists data</li>
+                        <li>Set the current variable equal to the inner HTML of the <code>#todo-list</code> and convert that HTML into a JSON string</li>
+                        <li>Repeat the same for the completed variable and <code>#completed-list</code></li>
+                    </ul>
+
+                    <div class="text-center mb-4">
+                        <div class="code-hide relative">
+                            <img src="/images/stringify.png" alt="" >
+                            <button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>On the localStorage object, set the <b>current</b> item equal to the variable current. (This <i>current</i> localStorage item can be named anything. Here we are keeping things simple by naming it the same thing as the variable we set it equal to)</li>
+                        <li>Do the same for a locaoStorage <b>completed</b> item</li>
+                        <li>Whenever the save() function gets invoked, all the <code>&lt;lt&gt;</code> and their markup will be converted into text and stored in the browser</li>
+                        <li>Invoke the save() function at the end of all our other functions from before. Call save() after a new item is created, when items are marked as completed, and when items are removed forever</li>
+                    </ul>
+
+                    <div class="text-center mb-4">
+                        <div class="code-hide relative">
+                            <img src="/images/localstorageset.png" alt="" >
+                            <button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+                        </div>
+                    </div>
+
+                    <p>A representation of our data is being saved, but when the page is refreshed everything is still reset to nothing. We need to actually use this data in localStorage to create an initial state of our application when the script first runs</p>
+                    
+                    <ul>
+                        <li>At the very top of the document ready function, create two variables: <b>savedCurrent</b> and <b>savedCompleted</b></li>
+                        <li>Assign these the values of the current and completed localStorage items set from the steps above</li>
+                    </ul>
+
+                    <div class="text-center">
+                        <div class="code-hide relative">
+                            <img src="/images/savedcurrent.png" alt="" >
+                            <button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>Use an if statement to see if savedCurrent has a value</li>
+                        <li>Inside the if statement, set savedCurrent equal to the parsed JSON value of itself using JSON.parse (We can reassign variable values, and use that variable's starting value to derive some new value of it)</li>
+                        <li>Set the innerHTML of <code>#todo-list</code> equal to savedCurrent</li>
+                        <li>Repeat the above for savedCompleted and set the HTML of <code>#completed-list</code> to it</li>
+                        <li><b>Now if you have some to-do list items already created or marked as completed, they will still show up even after refreshing the page!</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="step-nav text-center bg-dark">
+        <div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+            <button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+            <!--<div class="btn btn-light">{{step.step}}</div>-->
+            <button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+        </div>
+    
+        <div class="step-nav-progress">
+            <div class="step-nav-progress__track">
+                <div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+            </div>
+        </div>
+    </nav>

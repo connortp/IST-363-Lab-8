@@ -1,0 +1,35 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Keyup Event Listener</h2>
+				
+				<ul>
+					<li>We have clicking the button to create a to-do item, so let's do something similar for power users who want to be able to press the Enter key while typing in the text input to create an item that way</li>
+					<li>Use jQuery to select the input element and attach a <b>keyup</b> event handler to it. Pass through an announymous function with an event parameter like before. (Keyup events fire after a key has been pressed on a keyboard)</li>
+					<li>Inside the announymous function, create an if statement to check to see if the key pressed was the Enter key by looking for keyCode 13.</li>
+					<li>Use event.preventDefault() to prevent form submission before</li>
+					<li>Create the same todoText variable as before</li>
+					<li>Invoke the addTodo function again and pass it the todoText variable</li>
+					<li>Now if a user presses the Enter key or clicks the button, a new to-do item should be constructed</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Lab 8 - jQuery To-Do List</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="todo.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="todo.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <form>
+                    <div class="form-group">
+                        <label for="todo">Create a new to-do:</label>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control form-control-lg" id="todo" name="todo" placeholder="Ex: Buy milk" />
+                            <button class="btn btn-primary btn-lg" id="submit" aria-label="Create new to-do list item">+</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <h2 class="font-weight-normal text-primary">Current To-Dos</h2>
+                <ul id="todo-list"></ul>
+                
+                <h2 class="font-weight-normal text-primary">Completed</h2>
+                <ul id="completed-list"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
